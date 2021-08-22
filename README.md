@@ -1,9 +1,9 @@
 # The Dolphinator  
-__eEeEeEEeeEeEEEeeEEeEe eeEEeEEeeEeeeeeeEeeEEeeeEEEEeeEeEEEeeEeEEeeeEeeeEeeEEEEeeeeEeEEeeEeeeeeeeEEeE__
+__eeE eEeeeEeEeEe__
 
 Translate English to cetacean dialects and vice versa
 
-*eEeEeEEeeeEEeEeeEEEEeeeEeeeEeeeEEeeeeEeeEEeeEEEEeeeeEeEEeeEEeEe eEEEeEeeeEeeeEeeEEeeeeeEeeEEeeEeEEeeeeEEeeeeEeEEE eeeEeEEeeEeeee eeEEEeeeeEEeEeeeeEeEEeeEEEEeeeEEEeeeeEEeEeeeEEEEeeeEeeeE eeEEeEEeeEeEEeeeEEEEeeeEeeEEeeEEeEeeeEEEeeeeeEeEEeeeEEee eeEEEEeeeEeeeEeeEEeEE eeeEeeEeeEeEEeeeEEEeeeeEEeEe eeeEeeEeeEEeEeeeeEEeEeeeEEeeeeEEEEe*
+*eeEeEeEeE EeEeEEe eE EEeEEEEe eEEeEEeE Eee eEEE eEeEE*
 
 ---
 
