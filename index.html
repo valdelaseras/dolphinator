@@ -2,28 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>The Dolphinator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--    google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+
+    <!--    favicons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="./assets/icons/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--    styles-->
     <link rel="stylesheet" type="text/css" media="screen" href="styles/css/index.css" />
 
+    <!--    scripts-->
     <script defer src="/scripts/index.js"></script>
 </head>
 <body class="orca-theme">
     <div class="column">
-        <nav id="nav" data-selected-dialect="bottlenose">
-<!--            <ul class="nav-list">-->
-<!--                <li>-->
-<!--                    <a class="btn btn-primary btn-compact"-->
-<!--                       role="button"-->
-<!--                       tabindex="0"-->
-<!--                       data-dialect="orca">Orca</a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a class="btn btn-primary btn-compact"-->
-<!--                       role="button"-->
-<!--                       tabindex="0"-->
-<!--                       data-dialect="bottlenose">Bottlenose</a>-->
-<!--                </li>-->
+        <nav id="nav" data-selected-dialect="orca">
+            <ul class="nav-list">
+                <li>
+                    <a class="btn btn-primary btn-compact"
+                       role="button"
+                       tabindex="0"
+                       data-dialect="orca">Orca</a>
+                </li>
+                <li>
+                    <a class="btn btn-primary btn-compact"
+                       role="button"
+                       tabindex="0"
+                       data-dialect="bottlenose">Bottlenose</a>
+                </li>
             </ul>
         </nav>
         <section>
@@ -37,7 +53,8 @@
                                 <label for="textarea"></label>
                                 <textarea id="textarea"
                                           tabindex="0"
-                                          rows="15"></textarea>
+                                          placeholder="Type something..."
+                                          rows="10"></textarea>
 
                                 <div class="form-footer">
                                     <a id="clear-form-btn"
@@ -50,7 +67,7 @@
                                        class="btn btn-primary"
                                        tabindex="0"
                                        role="button">
-                                        E E E E!
+                                        Dolphinate!
                                     </a>
                                 </div>
                             </form>

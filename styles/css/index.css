@@ -4,9 +4,14 @@
 }
 
 body {
-  font-family: Helvetica Neue, sans-serif;
+  font-family: "Play", sans-serif;
   font-size: 18px;
   color: #f4f4f4;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 3rem;
 }
 
 body {
@@ -35,6 +40,7 @@ body {
 
 .btn:hover {
   cursor: pointer;
+  transition: all 150ms ease-in-out;
 }
 
 .btn.btn-primary {
@@ -42,8 +48,19 @@ body {
   background-color: var(--secondary-color);
 }
 
+.btn.btn-primary:hover {
+  border-color: var(--secondary-color);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
 .btn.btn-secondary {
-  border: 2px solid var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn.btn-secondary:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .btn.btn-compact {
@@ -64,14 +81,13 @@ form {
 /*@end form*/
 /*@start textarea*/
 textarea {
-  background-color: transparent;
+  background-color: #1c1c1c;
   border: 2px solid var(--secondary-color);
-  padding: 0.5rem;
+  padding: 1rem;
   margin: 1rem 0;
   color: var(--secondary-color);
   font-size: 1rem;
-  font-family: "Helvetica Neue", sans-serif;
-  font-weight: lighter;
+  font-family: "Play", sans-serif;
   letter-spacing: 3px;
 }
 

@@ -7,6 +7,7 @@
 
 .btn:hover {
     cursor: pointer;
+    transition: all 150ms ease-in-out;
 }
 
 .btn.btn-primary {
@@ -14,8 +15,19 @@
     background-color: var(--secondary-color);
 }
 
+.btn.btn-primary:hover {
+    border-color: var(--secondary-color);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
 .btn.btn-secondary {
-    border: 2px solid var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn.btn-secondary:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .btn.btn-compact {

@@ -14,15 +14,13 @@ form {
 
 /*@start textarea*/
 textarea {
-    background-color: transparent;
+    background-color: #1c1c1c;
     border: 2px solid var(--secondary-color);
-    //border-radius: 5px 15px;
-    padding: .5rem;
+    padding: 1rem;
     margin: 1rem 0;
     color: var(--secondary-color);
     font-size: 1rem;
-    font-family: "Helvetica Neue", sans-serif;
-    font-weight: lighter;
+    font-family: 'Play', sans-serif;
     letter-spacing: 3px;
 }
 /*@end textarea*/

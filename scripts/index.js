@@ -65,6 +65,7 @@ const displayTranslation = ( output ) => {
     textOutput.innerText = output;
 };
 
+
 const displayConsoleArt = () => {
     console.log(
         '\n' +
