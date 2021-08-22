@@ -4,3 +4,11 @@ __eEeEeEEeeEeEEEeeEEeEe eeEEeEEeeEeeeeeeEeeEEeeeEEEEeeEeEEEeeEeEEeeeEeeeEeeEEEEe
 Translate English to cetacean dialects and vice versa
 
 *eEeEeEEeeeEEeEeeEEEEeeeEeeeEeeeEEeeeeEeeEEeeEEEEeeeeEeEEeeEEeEe eEEEeEeeeEeeeEeeEEeeeeeEeeEEeeEeEEeeeeEEeeeeEeEEE eeeEeEEeeEeeee eeEEEeeeeEEeEeeeeEeEEeeEEEEeeeEEEeeeeEEeEeeeEEEEeeeEeeeE eeEEeEEeeEeEEeeeEEEEeeeEeeEEeeEEeEeeeEEEeeeeeEeEEeeeEEee eeEEEEeeeEeeeEeeEEeEE eeeEeeEeeEeEEeeeEEEeeeeEEeEe eeeEeeEeeEEeEeeeeEEeEeeeEEeeeeEEEEe*
+
+---
+
+`npm install`  
+
+`npm run serve`
+
+`npm run sass` to watch SCSS
