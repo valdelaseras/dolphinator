@@ -1,0 +1,18 @@
+#nav {
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    z-index: 999;
+}
+
+.nav-list > li {
+    display: inline-block;
+    margin-right: .5rem;
+}
+
+.nav-list > li:last-child {
+    margin-right: 0;
+}

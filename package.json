@@ -1,0 +1,16 @@
+{
+  "name": "cetaceanscript",
+  "version": "1.0.0",
+  "description": "Dolphin script",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass ./styles/scss:./styles/css/ --watch",
+    "serve": "http-server ."
+  },
+  "author": "robin@weird.io",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^13.0.1",
+    "sass": "^1.38.0"
+  }
+}
