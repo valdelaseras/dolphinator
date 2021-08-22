@@ -1,7 +1,7 @@
 {
   "name": "cetaceanscript",
   "version": "1.0.0",
-  "description": "Dolphin script",
+  "description": "Dolphinator",
   "main": "index.js",
   "scripts": {
     "sass": "sass ./styles/scss:./styles/css/ --watch",
