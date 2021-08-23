@@ -1,4 +1,3 @@
-// buttons
 const clearFormBtn = document.getElementById('clear-form-btn');
 const submitFormBtn = document.getElementById('submit-form-btn');
 const swapLangBtn = document.getElementById('swap-lang-btn');
@@ -6,9 +5,8 @@ const swapLangBtn = document.getElementById('swap-lang-btn');
 const textArea = document.getElementById('textarea');
 const textOutput = document.getElementById('text-output');
 
-// data-attributes
-const selectedDialect = document.getAttribute('data-selected-dialect');
-const selectedOutputLang = document.getAttribute('data-selected-output-lang');
+let selectedOutputLang = 'dolphin';
+let dialect = 'orca';
 
 window.onload = () => {
     displayConsoleArt();
@@ -19,8 +17,12 @@ const handleClick = ( e ) => {
         textArea.value = '';
         textArea.focus();
     } else if ( e.target === submitFormBtn ) {
-        const translation = translate( getDialect(), textArea.value );
+        const translation = translate( selectedOutputLang, dialect, textArea.value );
         displayTranslation( translation );
+    } else if ( e.target === swapLangBtn ) {
+        toggleOutputLang();
+    } else if ( e.target.hasAttribute( 'data-dialect' )) {
+        setDialect( e.target.getAttribute( 'data-dialect') );
     }
 }
 
@@ -32,38 +34,46 @@ const translate = ( lang, dialect, input ) => {
     if ( lang === 'dolphin') {
         switch ( dialect ){
             case 'orca':
-                result = convertToOrca( charArray );
+                result = encodeOrca( charArray );
                 break;
             // case 'bottlenose':
-            //     result = convertToAscii( charArray );
+            //     result = encodeBottlenose( charArray );
             //     break;
         }
     } else if ( lang === 'english' ) {
         switch ( dialect ) {
             case 'orca':
-                result = revertFromOrca(charArray);
+                result = decodeOrca(charArray);
                 break;
+            // case 'bottlenose':
+            //     result = decodeBottlenose(charArray);
+            //     break;
         }
     }
 
     return result.join('');
 };
 
-const getDialect = () => {
-    return nav.getAttribute( 'data-selected-dialect' );
-};
-
-const convertToAscii = ( input ) => {
+/////////////////* BOTTLENOSE *///////////////////
+/*
+* Return a space if input char is a space
+* Encode input to ASCII
+* Use modulo on the ASCII value to determine e or E
+* */
+// todo: refactor, use encodeAscii()
+const encodeBottlenose = ( input ) => {
     return input.map( ( character ) => {
         if ( character === ' ' ) {
             return character;
         } else {
             return character.charCodeAt( 0 ) % 2 === 0 ? 'e' : 'E'
+            // todo: impossible to decode back to Eng like this ^
         }
     });
 };
 
-const convertToOrca = ( input ) => {
+/////////////////* ORCA *///////////////////
+const encodeOrca = ( input ) => {
     return input.map( ( character ) => {
         if ( character === ' ' ) {
             return character;
@@ -74,8 +84,8 @@ const convertToOrca = ( input ) => {
     });
 };
 
-// todo: refactor into some separate funcs
-const revertFromOrca = ( input ) => {
+// todo: refactor + decodeBinary
+const decodeOrca = ( input ) => {
     const binaryArray = [];
     for ( const char of input ) {
         if ( char === ' ' ) {
@@ -93,9 +103,17 @@ const revertFromOrca = ( input ) => {
     return byteArray.map( byte => String.fromCharCode(parseInt( byte , 2 )) );
 };
 
+
+/////////////////* EN/DECODE *///////////////////
+
+// todo: docs & remaining en/decode functions
 const encodeToBinary = ( char ) => {
     return char.charCodeAt(0).toString(2).padStart(8, '0');
 };
+
+// encodeAscii = () => {}
+// decodeAscii = () => {}
+// decodeBinary = () => {}
 
 const displayTranslation = ( output ) => {
     textOutput.innerText = output;
@@ -132,6 +150,38 @@ const displayConsoleArt = () => {
         '\n' +
         '\n'
     );
+};
+
+// todo: refactor all of this nicely
+const toggleOutputLang = () => {
+    selectedOutputLang = selectedOutputLang === 'dolphin' ? 'english' : 'dolphin';
+
+    if ( selectedOutputLang === 'dolphin' ) {
+        submitFormBtn.innerText = 'Dolphinate!';
+        textArea.setAttribute( 'placeholder', 'Type something...');
+    } else {
+        submitFormBtn.innerText = 'Humanise!';
+        textArea.setAttribute( 'placeholder', `${translate( 'dolphin', dialect, 'Type something' )}...`);
+    }
+
+    textArea.value = '';
+}
+
+const setDialect = ( newDialect ) => {
+    dialect = newDialect;
+
+    document.querySelectorAll('a[data-dialect]').forEach( btn => btn.classList.remove( 'btn-primary' ) );
+    document.querySelectorAll('a[data-dialect]').forEach( btn => btn.classList.add( 'btn-primary-inverse' ) );
+    switch ( newDialect ) {
+        case 'bottlenose':
+            document.querySelector('a[data-dialect="bottlenose"]').classList.add( 'btn-primary' );
+            document.querySelector('a[data-dialect="bottlenose"]').classList.remove( 'btn-primary-inverse' );
+            break;
+        case 'orca':
+            document.querySelector('a[data-dialect="orca"]').classList.add( 'btn-primary' );
+            document.querySelector('a[data-dialect="orca"]').classList.remove( 'btn-primary-inverse' );
+            break;
+    }
 }
 
 document.addEventListener('click', handleClick );

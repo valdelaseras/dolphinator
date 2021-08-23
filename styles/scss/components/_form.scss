@@ -42,4 +42,23 @@ textarea {
     -ms-flex-pack: justify;
     justify-content: space-between;
 }
+
+.form-footer .flex-column-mobile {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-footer .flex-column-mobile a:first-child {
+    margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 768px){
+    .form-footer .flex-column-mobile {
+        flex-direction: row;
+    }
+
+    .form-footer .flex-column-mobile a:first-child {
+        margin-bottom: 0;
+    }
+}
 /*@end form footer*/
