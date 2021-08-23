@@ -57,17 +57,20 @@ const convertToOrca = ( input ) => {
             return character;
         } else {
             const binaryArray = encodeBinary( character ).split('');
-            return binaryArray.map(( str) => str === '1' ? 'e' : 'E' ).join('');
+            return binaryArray.map(( str ) => str === '1' ? 'e' : 'E' ).join('');
         }
     });
 };
+
+// EeeEeEEEEeeEeEEe EeeEEeEEEeeEeeeeEeeEeeEEEeeeEEEEEeeEeEEEEeeEeEEeEeeEeeeE
 
 const revertFromOrca = ( input ) => {
     return input.map( ( character ) => {
         if ( character === ' ' ) {
             return '00100000';
+            // return ('0','0','1','0','0','0','0','0');
         } else {
-            return parseInt( character === 'e' ? '1' : '0', 2);
+            return parseInt( character === 'e' ? '1' : '0',2).toString();
         }
     });
 };
