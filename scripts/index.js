@@ -26,7 +26,8 @@ const translate = ( dialect, input ) => {
 
     switch ( dialect ){
         case 'orca':
-            result = convertToBinary( charArray );
+            // result = convertToOrca( charArray );
+            result = revertFromOrca( charArray );
             break;
         case 'bottlenose':
             result = convertToAscii( charArray );
@@ -50,21 +51,34 @@ const convertToAscii = ( input ) => {
     });
 };
 
-const convertToBinary = ( input ) => {
+const convertToOrca = ( input ) => {
     return input.map( ( character ) => {
         if ( character === ' ' ) {
             return character;
         } else {
-            const binaryArray = character.charCodeAt( 0 ).toString(2 ).split('');
-            return binaryArray.map((string) => string === '1' ? 'e' : 'E' ).join('');
+            const binaryArray = encodeBinary( character ).split('');
+            return binaryArray.map(( str) => str === '1' ? 'e' : 'E' ).join('');
         }
     });
+};
+
+const revertFromOrca = ( input ) => {
+    return input.map( ( character ) => {
+        if ( character === ' ' ) {
+            return '00100000';
+        } else {
+            return parseInt( character === 'e' ? '1' : '0', 2);
+        }
+    });
+};
+
+const encodeBinary = ( char ) => {
+    return char.charCodeAt(0).toString(2).padStart(8, '0');
 };
 
 const displayTranslation = ( output ) => {
     textOutput.innerText = output;
 };
-
 
 const displayConsoleArt = () => {
     console.log(
