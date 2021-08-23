@@ -24,9 +24,9 @@
     <!--    scripts-->
     <script defer src="/scripts/index.js"></script>
 </head>
-<body class="orca-theme">
+<body class="orca-theme" data-selected-output-lang="dolphin" data-selected-dialect="orca">
     <div class="column">
-        <nav id="nav" data-selected-dialect="orca">
+<!--        <nav id="nav">-->
 <!--            <ul class="nav-list">-->
 <!--                <li>-->
 <!--                    <a class="btn btn-primary btn-compact"-->
@@ -41,7 +41,7 @@
 <!--                       data-dialect="bottlenose">Bottlenose</a>-->
 <!--                </li>-->
 <!--            </ul>-->
-        </nav>
+<!--        </nav>-->
         <section>
             <div class="grid">
                 <div class="column">
@@ -63,12 +63,21 @@
                                        role="button">
                                         Clear
                                     </a>
-                                    <a id="submit-form-btn"
-                                       class="btn btn-primary"
-                                       tabindex="0"
-                                       role="button">
-                                        Dolphinate!
-                                    </a>
+                                    <div>
+                                        <a id="swap-lang-btn"
+                                           class="btn btn-secondary"
+                                           tabindex="0"
+                                           role="button">
+                                            Swap
+                                        </a>
+                                        <a id="submit-form-btn"
+                                           class="btn btn-primary"
+                                           tabindex="0"
+                                           role="button">
+                                            Dolphinate!
+                                        </a>
+                                    </div>
+
                                 </div>
                             </form>
 

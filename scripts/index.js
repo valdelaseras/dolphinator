@@ -1,9 +1,14 @@
+// buttons
 const clearFormBtn = document.getElementById('clear-form-btn');
 const submitFormBtn = document.getElementById('submit-form-btn');
+const swapLangBtn = document.getElementById('swap-lang-btn');
+
 const textArea = document.getElementById('textarea');
 const textOutput = document.getElementById('text-output');
-const nav = document.getElementById('nav');
-const selectedDialect = nav.getAttribute('data-selected-dialect');
+
+// data-attributes
+const selectedDialect = document.getAttribute('data-selected-dialect');
+const selectedOutputLang = document.getAttribute('data-selected-output-lang');
 
 window.onload = () => {
     displayConsoleArt();
@@ -19,19 +24,26 @@ const handleClick = ( e ) => {
     }
 }
 
-const translate = ( dialect, input ) => {
+const translate = ( lang, dialect, input ) => {
     let result;
 
     let charArray = input.split( '' );
 
-    switch ( dialect ){
-        case 'orca':
-            // result = convertToOrca( charArray );
-            result = revertFromOrca( charArray );
-            break;
-        case 'bottlenose':
-            result = convertToAscii( charArray );
-            break;
+    if ( lang === 'dolphin') {
+        switch ( dialect ){
+            case 'orca':
+                result = convertToOrca( charArray );
+                break;
+            // case 'bottlenose':
+            //     result = convertToAscii( charArray );
+            //     break;
+        }
+    } else if ( lang === 'english' ) {
+        switch ( dialect ) {
+            case 'orca':
+                result = revertFromOrca(charArray);
+                break;
+        }
     }
 
     return result.join('');
@@ -56,26 +68,32 @@ const convertToOrca = ( input ) => {
         if ( character === ' ' ) {
             return character;
         } else {
-            const binaryArray = encodeBinary( character ).split('');
+            const binaryArray = encodeToBinary( character ).split('');
             return binaryArray.map(( str ) => str === '1' ? 'e' : 'E' ).join('');
         }
     });
 };
 
-// EeeEeEEEEeeEeEEe EeeEEeEEEeeEeeeeEeeEeeEEEeeeEEEEEeeEeEEEEeeEeEEeEeeEeeeE
-
+// todo: refactor into some separate funcs
 const revertFromOrca = ( input ) => {
-    return input.map( ( character ) => {
-        if ( character === ' ' ) {
-            return '00100000';
-            // return ('0','0','1','0','0','0','0','0');
+    const binaryArray = [];
+    for ( const char of input ) {
+        if ( char === ' ' ) {
+            binaryArray.push(...[ 0, 0, 1, 0, 0, 0, 0, 0 ]);
         } else {
-            return parseInt( character === 'e' ? '1' : '0',2).toString();
+            binaryArray.push( char === 'e' ? 1 : 0 );
         }
-    });
+    }
+
+    const byteArray = [];
+    for ( let i = 0;  i < binaryArray.length; i += 8 ) {
+        byteArray.push(binaryArray.slice(i, i + 8).join(''))
+    }
+
+    return byteArray.map( byte => String.fromCharCode(parseInt( byte , 2 )) );
 };
 
-const encodeBinary = ( char ) => {
+const encodeToBinary = ( char ) => {
     return char.charCodeAt(0).toString(2).padStart(8, '0');
 };
 
