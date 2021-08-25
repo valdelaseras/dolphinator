@@ -240,6 +240,7 @@ textarea:active {
 pre.ascii {
   width: 100%;
   overflow-x: hidden;
+  color: #ee98d1;
 }
 
 /*@start column*/

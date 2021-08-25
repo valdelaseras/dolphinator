@@ -192,10 +192,10 @@ const toggleOutputLang = () => {
     selectedOutputLang = selectedOutputLang === 'dolphin' ? 'english' : 'dolphin';
 
     if ( selectedOutputLang === 'dolphin' ) {
-        submitFormBtn.innerText = 'Dolphinate!';
+        submitFormBtn.innerText = 'dolphinate!';
         textArea.setAttribute( 'placeholder', 'Type something...');
     } else {
-        submitFormBtn.innerText = 'Humanise!';
+        submitFormBtn.innerText = 'humanise!';
         textArea.setAttribute( 'placeholder', `${translate( 'dolphin', dialect, 'Type something' )}...`);
     }
 
