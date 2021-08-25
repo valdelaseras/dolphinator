@@ -7,85 +7,79 @@ const textOutput = document.getElementById('text-output');
 
 let selectedOutputLang = 'dolphin';
 let dialect = 'orca';
+let interval;
 
 window.onload = () => {
     displayConsoleArt();
 }
 
-const handleClick = ( e ) => {
-    if ( e.target === clearFormBtn ) {
+const handleKeyUp = ( e ) => {
+    if ( e.key === 'Enter' ) {
+        eventHandler( e );
+
+        e.preventDefault();
+    }
+};
+
+const eventHandler = ( e ) => {
+    if ( e.target === clearFormBtn) {
         textArea.value = '';
         textArea.focus();
-    } else if ( e.target === submitFormBtn ) {
-        const translation = translate( selectedOutputLang, dialect, textArea.value );
-        displayTranslation( translation );
-    } else if ( e.target === swapLangBtn ) {
+    } else if ( e.target === submitFormBtn) {
+        textOutput.innerText = '';
+        submitFormBtn.blur();
+
+        if (interval) {
+            clearInterval(interval);
+            interval = null;
+        }
+
+        const translation = translate(selectedOutputLang, dialect, textArea.value);
+        displayTranslation(translation);
+    } else if (e.target === swapLangBtn) {
         toggleOutputLang();
-    } else if ( e.target.hasAttribute( 'data-dialect' )) {
-        setDialect( e.target.getAttribute( 'data-dialect') );
+        textArea.focus();
     }
 }
 
+/*
+* Switch to translate in the intended language ( which is either ENG > Dolphin or
+* vice versa ). The dialects ( dolphin species ) have different en/decode methods,
+* resulting in different dolphin language outputs.
+*/
 const translate = ( lang, dialect, input ) => {
     let result;
-
     let charArray = input.split( '' );
 
     if ( lang === 'dolphin') {
         switch ( dialect ){
             case 'orca':
-                result = encodeOrca( charArray );
+                result = encodeToOrca( charArray );
                 break;
-            // case 'bottlenose':
-            //     result = encodeBottlenose( charArray );
-            //     break;
         }
     } else if ( lang === 'english' ) {
         switch ( dialect ) {
             case 'orca':
-                result = decodeOrca(charArray);
+                result = decodeFromOrca( charArray );
                 break;
-            // case 'bottlenose':
-            //     result = decodeBottlenose(charArray);
-            //     break;
         }
     }
 
     return result.join('');
 };
 
-/////////////////* BOTTLENOSE *///////////////////
+/////////////////* START EN/DECODE *///////////////////
 /*
-* Return a space if input char is a space
-* Encode input to ASCII
-* Use modulo on the ASCII value to determine e or E
-* */
-// todo: refactor, use encodeAscii()
-const encodeBottlenose = ( input ) => {
-    return input.map( ( character ) => {
-        if ( character === ' ' ) {
-            return character;
-        } else {
-            return character.charCodeAt( 0 ) % 2 === 0 ? 'e' : 'E'
-            // todo: impossible to decode back to Eng like this ^
-        }
-    });
+* Encode English to binary
+*/
+const encodeToBinary = ( char ) => {
+    return char.charCodeAt(0).toString(2).padStart(8, '0');
 };
 
-/////////////////* ORCA *///////////////////
-const encodeOrca = ( input ) => {
-    return input.map( ( character ) => {
-        if ( character === ' ' ) {
-            return character;
-        } else {
-            const binaryArray = encodeToBinary( character ).split('');
-            return binaryArray.map(( str ) => str === '1' ? 'e' : 'E' ).join('');
-        }
-    });
-};
-
-// todo: refactor + decodeBinary
-const decodeOrca = ( input ) => {
+/*
+* Decode orca dialect via binary to English
+*/
+const decodeFromOrca = ( input ) => {
     const binaryArray = [];
     for ( const char of input ) {
         if ( char === ' ' ) {
@@ -103,22 +97,49 @@ const decodeOrca = ( input ) => {
     return byteArray.map( byte => String.fromCharCode(parseInt( byte , 2 )) );
 };
 
+/*
+* Encode English to orca dialect via binary encoding
+*/
+const encodeToOrca = ( input ) => {
+    return input.map( ( character ) => {
+        if ( character === ' ' ) {
+            return character;
+        } else {
+            const binaryArray = encodeToBinary( character ).split('');
+            return binaryArray.map(( str ) => str === '1' ? 'e' : 'E' ).join('');
+        }
+    });
+};
+/////////////////* END EN/DECODE *///////////////////
 
-/////////////////* EN/DECODE *///////////////////
+/////////////////* START DISPLAY *///////////////////
+/*
+* Display the translation character by character
+* with a slight interval to create a typewriter
+* effect
+*/
+const displayTranslation = ( translation ) => {
+    let counter = 0;
 
-// todo: docs & remaining en/decode functions
-const encodeToBinary = ( char ) => {
-    return char.charCodeAt(0).toString(2).padStart(8, '0');
+    interval = setInterval(() => {
+        const character = translation.charAt( counter );
+        if ( character === ' ' ) {
+            textOutput.innerHTML += '&nbsp;';
+        } else {
+            textOutput.innerText += character;
+        }
+
+        counter++;
+
+        if ( counter === translation.length ) {
+            clearInterval( interval );
+        }
+    }, 10);
 };
 
-// encodeAscii = () => {}
-// decodeAscii = () => {}
-// decodeBinary = () => {}
-
-const displayTranslation = ( output ) => {
-    textOutput.innerText = output;
-};
-
+/*
+ * Just display some extra dolphins in console :3
+ */
 const displayConsoleArt = () => {
     console.log(
         '\n' +
@@ -151,8 +172,13 @@ const displayConsoleArt = () => {
         '\n'
     );
 };
+/////////////////* END DISPLAY *///////////////////
 
-// todo: refactor all of this nicely
+/////////////////* START OUTPUT LANG TOGGLE *///////////////////
+/*
+* Switch from English to Dolphin and vice versa.
+* The dialect indicates dolphin species and a different en/decoder method
+*/
 const toggleOutputLang = () => {
     selectedOutputLang = selectedOutputLang === 'dolphin' ? 'english' : 'dolphin';
 
@@ -165,23 +191,8 @@ const toggleOutputLang = () => {
     }
 
     textArea.value = '';
-}
+};
+/////////////////* END OUTPUT LANG TOGGLE *///////////////////
 
-const setDialect = ( newDialect ) => {
-    dialect = newDialect;
-
-    document.querySelectorAll('a[data-dialect]').forEach( btn => btn.classList.remove( 'btn-primary' ) );
-    document.querySelectorAll('a[data-dialect]').forEach( btn => btn.classList.add( 'btn-primary-inverse' ) );
-    switch ( newDialect ) {
-        case 'bottlenose':
-            document.querySelector('a[data-dialect="bottlenose"]').classList.add( 'btn-primary' );
-            document.querySelector('a[data-dialect="bottlenose"]').classList.remove( 'btn-primary-inverse' );
-            break;
-        case 'orca':
-            document.querySelector('a[data-dialect="orca"]').classList.add( 'btn-primary' );
-            document.querySelector('a[data-dialect="orca"]').classList.remove( 'btn-primary-inverse' );
-            break;
-    }
-}
-
-document.addEventListener('click', handleClick );
+document.addEventListener('click', eventHandler );
+document.addEventListener('keydown', handleKeyUp );
