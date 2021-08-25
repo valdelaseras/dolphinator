@@ -2,8 +2,6 @@ body {
     background-color: var(--primary-color);
 }
 
-
-
 .terminal-look::after {
     content: "";
     position: fixed;
@@ -19,4 +17,38 @@ body {
                     transparent 2px
     );
     pointer-events: none;
+}
+
+.background {
+    z-index: -10;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgb(204,170,255);
+    background: linear-gradient(180deg, rgba(204,170,255,1) 17%, rgba(204,204,238,1) 39%, rgba(204,238,221,1) 62%, rgba(204,255,204,1) 90%);
+
+    .sun {
+        background: rgb(255,255,204);
+        background: linear-gradient(0deg, rgba(255,255,204,1) 0%, rgba(255,170,255,1) 100%);
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        position: absolute;
+        top: 35%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    .ocean {
+        //background: rgb(255,255,204);
+        //background: linear-gradient(180deg, rgba(255,255,204,.85) 18%, rgba(204,238,255,.85) 62%);
+        //border: 4px solid black;
+        width: 100vw;
+        position: absolute;
+        top: 75vh;
+        height: 25vh;
+    }
 }

@@ -6,7 +6,7 @@
 body {
   font-family: "Play", sans-serif;
   font-size: 18px;
-  color: #f4f4f4;
+  color: #ce68c1;
 }
 
 h1 {
@@ -15,6 +15,11 @@ h1 {
 }
 
 @media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+@media only screen and (min-width: 1440px) {
   h1 {
     font-size: 3rem;
   }
@@ -50,6 +55,35 @@ body {
   height: 100vh;
   background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px);
   pointer-events: none;
+}
+
+.background {
+  z-index: -10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: #ccaaff;
+  background: linear-gradient(180deg, #ccaaff 17%, #ccccee 39%, #cceedd 62%, #ccffcc 90%);
+}
+.background .sun {
+  background: #ffffcc;
+  background: linear-gradient(0deg, #ffffcc 0%, #ffaaff 100%);
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  position: absolute;
+  top: 35%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.background .ocean {
+  width: 100vw;
+  position: absolute;
+  top: 75vh;
+  height: 25vh;
 }
 
 .tablet-only {
@@ -90,6 +124,7 @@ body {
 }
 
 .btn.btn-secondary {
+  color: var(--primary-color);
   border-color: var(--secondary-color);
 }
 
@@ -119,15 +154,16 @@ form {
 /*@end form*/
 /*@start textarea*/
 textarea {
-  background-color: #1c1c1c;
+  background-color: rgba(11, 11, 11, 0.8);
   border: 2px solid #1c1c1c;
   border-radius: 15px;
   padding: 1rem;
-  margin: 1rem 0;
+  margin-bottom: 1.5rem;
   color: var(--secondary-color);
   font-size: 1rem;
   font-family: "Play", sans-serif;
   letter-spacing: 3px;
+  height: 25vh;
 }
 
 @media only screen and (min-width: 768px) {
@@ -272,7 +308,7 @@ pre.ascii {
 
 /* @start grid */
 .grid {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;

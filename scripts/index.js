@@ -5,12 +5,21 @@ const swapLangBtn = document.getElementById('swap-lang-btn');
 const textArea = document.getElementById('textarea');
 const textOutput = document.getElementById('text-output');
 
+const defaultDolphinTextOutput = textOutput.value = 'EeeEeEEEEeeEEeEeEeeEeeEEEeeEeeEEEeeEeeee EeEEeEEe EeeEEEEeEeeEeeEe EeeEEeEEEeeEeeeeEeeEeeEEEeeeEEEEEeeEeEEEEeeEeEEeEeeEeeeE';
+const defaultHumanTextOutput = textOutput.value = 'Hello, I am dolphin';
+
 let selectedOutputLang = 'dolphin';
 let dialect = 'orca';
 let interval;
 
 window.onload = () => {
     displayConsoleArt();
+
+    if ( selectedOutputLang === 'dolphin' ){
+        textOutput.innerText = defaultDolphinTextOutput;
+    } else {
+        textOutput.innerText = defaultHumanTextOutput;
+    }
 }
 
 const handleKeyUp = ( e ) => {
