@@ -16,9 +16,9 @@ window.onload = () => {
     displayConsoleArt();
 
     if ( selectedOutputLang === 'dolphin' ){
-        textOutput.innerText = defaultDolphinTextOutput;
+        displayTranslation( defaultDolphinTextOutput );
     } else {
-        textOutput.innerText = defaultHumanTextOutput;
+        displayTranslation( defaultHumanTextOutput );
     }
 }
 

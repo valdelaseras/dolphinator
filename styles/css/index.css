@@ -168,7 +168,7 @@ textarea {
 
 @media only screen and (min-width: 768px) {
   textarea {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 }
 textarea:focus,
@@ -327,6 +327,11 @@ pre.ascii {
   .reverse-tablet {
     display: flex;
     flex-direction: row-reverse;
+  }
+}
+@media only screen and (min-width: 768px) {
+  section {
+    padding: 5vh 0;
   }
 }
 
