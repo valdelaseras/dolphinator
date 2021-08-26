@@ -11,11 +11,20 @@ body {
 
 h1 {
   font-size: 2rem;
+  word-break: break-word;
+}
+
+h1 {
+  margin-left: -12px;
 }
 
 @media only screen and (min-width: 768px) {
   h1 {
     font-size: 2.5rem;
+  }
+
+  h1 {
+    margin-left: -20px;
   }
 }
 @media only screen and (min-width: 1440px) {
@@ -26,6 +35,10 @@ h1 {
 #text-output {
   line-height: 2rem;
   letter-spacing: 3px;
+}
+
+.upside-down {
+  transform: scale(-1, 1);
 }
 
 body {
@@ -58,7 +71,7 @@ body {
 
 .background {
   z-index: -10;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -69,20 +82,49 @@ body {
 .background .sun {
   background: #ffffcc;
   background: linear-gradient(0deg, #ffffcc 0%, #ffaaff 100%);
-  width: 500px;
-  height: 500px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   position: absolute;
-  top: 35%;
+  top: calc(50vh - 125px);
   left: 0;
   right: 0;
   margin: 0 auto;
+  opacity: 0.8;
 }
-.background .ocean {
-  width: 100vw;
+.background .dolphin {
   position: absolute;
-  top: 75vh;
-  height: 25vh;
+  height: 290px;
+  width: 290px;
+  top: calc(50vh - 145px);
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: spin 4s infinite linear;
+}
+.background .dolphin img {
+  margin: 2.5rem;
+  height: 100px;
+  width: auto;
+  opacity: 0.05;
+  transform: rotate(-60deg);
+}
+@media only screen and (min-width: 768px) {
+  .background .sun {
+    width: 500px;
+    height: 500px;
+    top: calc(50vh - 250px);
+  }
+  .background .dolphin {
+    height: 500px;
+    width: 500px;
+    top: calc(50vh - 250px);
+  }
+  .background .dolphin img {
+    margin: 3rem;
+    height: 200px;
+  }
 }
 
 .tablet-only {
@@ -158,7 +200,7 @@ textarea {
   border-radius: 15px;
   padding: 1rem;
   margin-bottom: 1.5rem;
-  color: var(--secondary-color);
+  color: #f4f4f4;
   font-size: 1rem;
   font-family: "Play", sans-serif;
   letter-spacing: 3px;
@@ -243,6 +285,14 @@ pre.ascii {
   color: #ee98d1;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
 /*@start column*/
 @media only screen and (min-width: 768px) {
   .column {

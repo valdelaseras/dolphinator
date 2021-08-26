@@ -15,10 +15,12 @@ let interval;
 window.onload = () => {
     displayConsoleArt();
 
-    if ( selectedOutputLang === 'dolphin' ){
-        displayTranslation( defaultDolphinTextOutput );
-    } else {
-        displayTranslation( defaultHumanTextOutput );
+    if ( screen.width >= 768 ){
+        if ( selectedOutputLang === 'dolphin' ){
+            displayTranslation( defaultDolphinTextOutput );
+        } else {
+            displayTranslation( defaultHumanTextOutput );
+        }
     }
 }
 
@@ -143,7 +145,7 @@ const displayTranslation = ( translation ) => {
         if ( counter === translation.length ) {
             clearInterval( interval );
         }
-    }, 10);
+    }, 5);
 };
 
 /*
