@@ -3,7 +3,9 @@
     100% { transform: rotate(-360deg);}
 }
 
-//@keyframes spinPartly {
-//    75% { transform: rotate(-60deg);}
-    //100% { transform: rotate(-420deg);}
-//}
+@keyframes spinning-gradient {
+    0% { background: linear-gradient(0deg, rgba(255, 255, 204, 1) 0%, rgba(255, 170, 255, 1) 100%); }
+    50% { background: linear-gradient(0deg, rgba(255, 255, 204, 1) 100%, rgba(255, 170, 255, 1) 0%); }
+    100% { background: linear-gradient(0deg, rgba(255, 255, 204, 1) 0%, rgba(255, 170, 255, 1) 100%);}
+}
+

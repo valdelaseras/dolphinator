@@ -157,28 +157,20 @@ const displayConsoleArt = () => {
         '\n' +
         '\n' +
         '\n' +
-        '                                    _\n' +
-        '                               _.-~~.)\n' +
-        '         _.--~~~~~---....__  .\' . .,\'\n' +
-        '       ,\'. . . . . . . . . .~- ._ (\n' +
-        '      ( .. .g. . . . . . . . . . .~-._\n' +
-        '   .~__.-~    ~`. . . . . . . . . . . -.\n' +
-        '   `----..._      ~-=~~-. . . . . . . . ~-.\n' +
-        '             ~-._   `-._ ~=_~~--. . . . . .~.\n' +
-        '              | .~-.._  ~--._-.    ~-. . . . ~-.\n' +
-        '               \\ .(   ~~--.._~\'       `. . . . .~-.                ,\n' +
-        '                `._\\         ~~--.._    `. . . . . ~-.    .- .   ,\'/\n' +
-        '_  . _ . -~\\        _ ..  _          ~~--.`_. . . . . ~-_     ,-\',\'`  .\n' +
-        '             ` ._           ~                ~--. . . . .~=.-\'. /. `\n' +
-        '       - . -~            -. _ . - ~ - _   - ~     ~--..__~ _,. /   \\  - ~\n' +
-        '              . __ ..                   ~-               ~~_. (  `\n' +
-        ')`. _ _               `-       ..  - .    . - ~ ~ .    \\    ~-` ` `  `. _\n' +
-        '      _ Seal _\n' +
-        '\n' +
-        '\n' +
-        '\n' +
-        '\n' +
-        'All awesome ASCII art by Seal \n' +
+        '                                  __\n' +
+        '                               _.-~  )\n' +
+        '                    _..--~~~~,\'   ,-/     _\n' +
+        '                 .-\'. . . .\'   ,-\',\'    ,\' )\n' +
+        '               ,\'. . . _   ,--~,-\'__..-\'  ,\'\n' +
+        '             ,\'. . .  (@)\' ---~~~~      ,\'\n' +
+        '            /. . . . \'~~             ,-\'\n' +
+        '           /. . . . .             ,-\'\n' +
+        '          ; . . . .  - .        ,\'\n' +
+        '         : . . . .       _     /\n' +
+        '        . . . . .          `-.:\n' +
+        '       . . . ./  - .          )\n' +
+        '      .  . . |  _____..---.._/ ____ Seal _\n' +
+        '~---~~~~----~~~~             ~~\n' +
         '\n' +
         '\n'
     );
@@ -194,10 +186,10 @@ const toggleOutputLang = () => {
     selectedOutputLang = selectedOutputLang === 'dolphin' ? 'english' : 'dolphin';
 
     if ( selectedOutputLang === 'dolphin' ) {
-        submitFormBtn.innerText = 'dolphinate!';
+        submitFormBtn.innerText = 'd o l p h i n a t e';
         textArea.setAttribute( 'placeholder', 'Type something...');
     } else {
-        submitFormBtn.innerText = 'humanise!';
+        submitFormBtn.innerText = 'h u m a n i s e';
         textArea.setAttribute( 'placeholder', `${translate( 'dolphin', dialect, 'Type something' )}...`);
     }
 
