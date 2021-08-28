@@ -14,6 +14,8 @@ let lang = 'dolphin';
 let script = 'latin';
 let interval;
 
+let theme = 'dark-theme';
+
 window.onload = () => {
     displayConsoleArt();
     updateTextareaPlaceholder();
@@ -45,9 +47,34 @@ const eventHandler = ( e ) => {
 
     } else if ( e.target.hasAttribute('data-script')){
         updateScript( e );
+        updateTextareaPlaceholder();
+        textArea.value = '';
+        textArea.focus();
+
+        clearOutput();
+
+    } else if ( e.target.hasAttribute( 'data-theme' ) ){
+        removeClassOnElements( 'selected', document.querySelectorAll('[data-theme]'));
+        setTheme( e.target.getAttribute( 'data-theme' ) );
+        e.target.classList.add('selected');
+
     }
 }
 
+/*
+* Set the selected theme
+*/
+const setTheme = ( newTheme ) => {
+    const body = document.getElementsByTagName( 'BODY' )[0];
+    body.classList.remove( theme );
+    theme = newTheme;
+    body.classList.add( theme );
+}
+
+/*
+* Update the selected script ( Latin or Japanese alphabets )
+* Change the textarea placeholder accordingly
+*/
 const updateScript = ( e ) => {
     // handle script button classes
     removeClassOnElements( 'selected', navScriptBtns );
@@ -55,13 +82,6 @@ const updateScript = ( e ) => {
 
     // set script to target script
     script = e.target.getAttribute( 'data-script');
-
-    // update the textarea accordingly
-    updateTextareaPlaceholder();
-    textArea.value = '';
-    textArea.focus();
-
-    clearOutput();
 }
 
 /*

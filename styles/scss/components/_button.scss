@@ -31,11 +31,25 @@
     border-color: var(--primary-color);
 }
 
+.dark-theme .btn.btn-secondary {
+    color: var(--primary-text-color);
+    border-color: var(--primary-color);
+}
+
 .btn.btn-secondary:focus,
 .btn.btn-secondary:focus-within,
 .btn.btn-secondary:active,
 .btn.btn-secondary:hover {
     background-color: var(--primary-color);
+}
+
+.dark-theme {
+    .btn.btn-secondary:focus,
+    .btn.btn-secondary:focus-within,
+    .btn.btn-secondary:active,
+    .btn.btn-secondary:hover {
+        background-color: var(--tertiary-color);
+    }
 }
 
 .btn.btn-compact {

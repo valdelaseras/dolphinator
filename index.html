@@ -24,7 +24,7 @@
     <!--    scripts-->
     <script defer src="/scripts/index.js"></script>
 </head>
-<body>
+<body class="dark-theme">
     <div class="column">
         <section>
             <div class="grid">
@@ -40,14 +40,10 @@
                         </ul>
                         <ul class="nav-list">
                             <li>
-                                <a tabindex="0" class="btn nav-btn btn-icon selected">
-                                    Light
-                                </a>
+                                <a tabindex="0" class="btn nav-btn" data-theme="light-theme">Light</a>
                             </li>
                             <li>
-                                <a tabindex="0" class="btn nav-btn btn-icon">
-                                    Dark
-                                </a>
+                                <a tabindex="0" class="btn nav-btn selected" data-theme="dark-theme">Dark</a>
                             </li>
                         </ul>
                     </nav>
@@ -74,7 +70,7 @@
                                            class="btn btn-secondary btn-icon"
                                            tabindex="0"
                                            role="button">
-                                            <img src="assets/icons/swap.svg" alt="swap arrows"/>
+                                            <img src="assets/icons/swap.svg" class="invert-on-dark-theme" alt="swap arrows"/>
                                         </a>
                                         <a id="submit-form-btn"
                                            class="btn btn-primary"
@@ -101,7 +97,7 @@
         </section>
     </div>
     <div class="background">
-        <div class="sun"></div>
+        <div class="sun tablet-only"></div>
         <div class="dolphin">
             <img src="assets/images/dolphin.png" alt="dolphin"/>
         </div>

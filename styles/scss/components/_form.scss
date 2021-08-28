@@ -13,10 +13,12 @@ form {
 
 
 /*@start textarea*/
-textarea {
+.dark-theme textarea {
     background-color: rgba(11,11,11,.5);
-    //light theme
-    //background-color: rgba(11,11,11,.1);
+}
+
+textarea {
+    background-color: rgba(11,11,11,.1);
     border: none;
     border-radius: 15px;
     padding: 1rem;
@@ -25,7 +27,7 @@ textarea {
     font-size: 1rem;
     font-family: 'Play', sans-serif;
     letter-spacing: 3px;
-    height: 50vh;
+    height: 32vh;
 }
 
 @media only screen and ( min-width: 768px ){
