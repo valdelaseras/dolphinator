@@ -1,4 +1,20 @@
+//:root {
+//    --primary-color: #f4f4f4;
+//    --secondary-color: #222;
+//    --tertiary-color: #ce68c1;
+//
+//    --primary-text-color: var(--tertiary-color);
+//    --secondary-text-color: var(--secondary-color);
+//    --tertiary-text-color: var(--primary-color);
+//}
+
 :root {
-    --primary-color: #222;
-    --secondary-color: #f4f4f4;
+    --primary-color: #f4f4f4;
+    --secondary-color: #222;
+    --tertiary-color: #ce68c1;
+
+    --primary-text-color: var(--primary-color);
+    --secondary-text-color: var(--secondary-color);
+    --tertiary-text-color: var(--primary-color);
 }
+

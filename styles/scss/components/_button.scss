@@ -13,30 +13,29 @@
 }
 
 .btn.btn-primary {
-    color: var(--primary-color);
-    background-color: var(--secondary-color);
+    color: var(--secondary-text-color);
+    background-color: var(--primary-color);
 }
 
 .btn.btn-primary:hover,
 .btn.btn-primary:active,
 .btn.btn-primary:focus,
 .btn.btn-primary:focus-within, {
-    border-color: var(--secondary-color);
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    border-color: var(--primary-color);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .btn.btn-secondary {
-    color: var(--primary-color);
-    border-color: var(--secondary-color);
+    color: var(--secondary-text-color);
+    border-color: var(--primary-color);
 }
 
 .btn.btn-secondary:focus,
 .btn.btn-secondary:focus-within,
 .btn.btn-secondary:active,
 .btn.btn-secondary:hover {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
+    background-color: var(--primary-color);
 }
 
 .btn.btn-compact {

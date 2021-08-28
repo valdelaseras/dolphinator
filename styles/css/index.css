@@ -1,12 +1,16 @@
 :root {
-  --primary-color: #222;
-  --secondary-color: #f4f4f4;
+  --primary-color: #f4f4f4;
+  --secondary-color: #222;
+  --tertiary-color: #ce68c1;
+  --primary-text-color: var(--primary-color);
+  --secondary-text-color: var(--secondary-color);
+  --tertiary-text-color: var(--primary-color);
 }
 
 body {
   font-family: "Play", sans-serif;
   font-size: 18px;
-  color: #ce68c1;
+  color: var(--primary-text-color);
 }
 
 h1 {
@@ -56,6 +60,8 @@ ul > li {
 
 body {
   background-color: var(--primary-color);
+  background-image: url("assets/images/stars.png");
+  background-repeat: repeat;
 }
 
 body::after {
@@ -77,11 +83,11 @@ body::after {
   left: 0;
   bottom: 0;
   background: #ccaaff;
-  background: linear-gradient(180deg, #ccaaff 17%, #ccccee 39%, #cceedd 62%, #ccffcc 90%);
+  background: linear-gradient(180deg, #3b0986 17%, #4529ab 39%, #8550d6 68%, rgba(250, 161, 250, 0.8) 105%);
 }
 .background .sun {
   background: #ffffcc;
-  background: linear-gradient(0deg, #ffffcc 0%, #ffaaff 100%);
+  background: linear-gradient(180deg, #ffffcc 0%, #ffaaff 100%);
   width: 250px;
   height: 250px;
   border-radius: 50%;
@@ -151,30 +157,29 @@ body::after {
 }
 
 .btn.btn-primary {
-  color: var(--primary-color);
-  background-color: var(--secondary-color);
+  color: var(--secondary-text-color);
+  background-color: var(--primary-color);
 }
 
 .btn.btn-primary:hover,
 .btn.btn-primary:active,
 .btn.btn-primary:focus,
 .btn.btn-primary:focus-within {
-  border-color: var(--secondary-color);
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  border-color: var(--primary-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .btn.btn-secondary {
-  color: var(--primary-color);
-  border-color: var(--secondary-color);
+  color: var(--secondary-text-color);
+  border-color: var(--primary-color);
 }
 
 .btn.btn-secondary:focus,
 .btn.btn-secondary:focus-within,
 .btn.btn-secondary:active,
 .btn.btn-secondary:hover {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+  background-color: var(--primary-color);
 }
 
 .btn.btn-compact {
@@ -201,7 +206,7 @@ form {
 /*@end form*/
 /*@start textarea*/
 textarea {
-  background-color: rgba(11, 11, 11, 0.1);
+  background-color: rgba(11, 11, 11, 0.5);
   border: none;
   border-radius: 15px;
   padding: 1rem;
@@ -269,6 +274,9 @@ textarea:active {
 
 #nav {
   padding: 5px 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
 }
 
 @media only screen and (min-width: 768px) {
@@ -286,7 +294,7 @@ textarea:active {
 }
 
 .btn.nav-btn {
-  color: #f4f4f4;
+  color: var(--tertiary-text-color);
   background-color: transparent;
   transition: all 150ms;
 }
@@ -295,21 +303,21 @@ textarea:active {
 .btn.nav-btn:active,
 .btn.nav-btn:focus,
 .btn.nav-btn:focus-within {
-  color: #ce68c1;
-  background-color: #f4f4f4;
+  color: var(--primary-text-color);
+  background-color: var(--primary-color);
 }
 
 .btn.nav-btn.selected {
   background-color: rgba(204, 255, 204, 0.6);
-  color: #222;
+  color: var(--secondary-text-color);
 }
 
 .btn.nav-btn.selected:hover,
 .btn.nav-btn.selected:active,
 .btn.nav-btn.selected:focus,
 .btn.nav-btn.selected:focus-within {
-  color: #f4f4f4;
-  background-color: #ce68c1;
+  color: var(--tertiary-text-color);
+  background-color: var(--tertiary-color);
 }
 
 pre.ascii {
