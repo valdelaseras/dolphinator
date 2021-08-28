@@ -2,7 +2,7 @@ body {
     background-color: var(--primary-color);
 }
 
-.terminal-look::after {
+body::after {
     content: "";
     position: fixed;
     top: 0;

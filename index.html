@@ -24,7 +24,7 @@
     <!--    scripts-->
     <script defer src="/scripts/index.js"></script>
 </head>
-<body class="terminal-look">
+<body>
     <div class="column">
         <section>
             <div class="grid">
@@ -39,24 +39,24 @@
                                           placeholder="Type something..."></textarea>
 
                                 <div class="form-footer">
-                                    <a id="clear-form-btn"
+                                    <a id="clear-textarea-btn"
                                        tabindex="0"
                                        class="btn btn-secondary"
                                        role="button">
-                                        c l e a r
+                                        clear
                                     </a>
                                     <div class="flex-column-mobile">
-                                        <a id="swap-lang-btn"
-                                           class="btn btn-secondary"
+                                        <a id="swap-direction-btn"
+                                           class="btn btn-secondary btn-icon"
                                            tabindex="0"
                                            role="button">
-                                            s w a p
+                                            <img src="assets/icons/swap.svg" alt="swap arrows"/>
                                         </a>
                                         <a id="submit-form-btn"
                                            class="btn btn-primary"
                                            tabindex="0"
                                            role="button">
-                                            d o l p h i n a t e
+                                            translate
                                         </a>
                                     </div>
 
@@ -67,11 +67,8 @@
                     </div>
                     <div class="column">
                         <div class="column two">
-                            <div class="content"></div>
-                        </div>
-                        <div class="column two">
                             <div class="content">
-                                <div id="text-output"></div>
+                                <div id="translation-output"></div>
                             </div>
                         </div>
                     </div>

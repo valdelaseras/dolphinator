@@ -1,12 +1,12 @@
-const clearFormBtn = document.getElementById('clear-form-btn');
+const clearTextareaBtn = document.getElementById('clear-textarea-btn');
 const submitFormBtn = document.getElementById('submit-form-btn');
-const swapLangBtn = document.getElementById('swap-lang-btn');
+const swapDirectionBtn = document.getElementById('swap-direction-btn');
 
 const textArea = document.getElementById('textarea');
-const textOutput = document.getElementById('text-output');
+const translationOutput = document.getElementById('translation-output');
 
-const defaultDolphinTextOutput = textOutput.value = 'EeeEeEEEEeeEEeEeEeeEeeEEEeeEeeEEEeeEeeee EeEEeEEe EeeEEEEeEeeEeeEe EeeEEeEEEeeEeeeeEeeEeeEEEeeeEEEEEeeEeEEEEeeEeEEeEeeEeeeE';
-const defaultHumanTextOutput = textOutput.value = 'Hello, I am dolphin';
+const defaultDolphinTextOutput = translationOutput.value = 'EeeEeEEEEeeEEeEeEeeEeeEEEeeEeeEEEeeEeeee EeEEeEEe EeeEEEEeEeeEeeEe EeeEEeEEEeeEeeeeEeeEeeEEEeeeEEEEEeeEeEEEEeeEeEEeEeeEeeeE';
+const defaultHumanTextOutput = translationOutput.value = 'Hello, I am dolphin';
 
 let selectedOutputLang = 'dolphin';
 let dialect = 'orca';
@@ -27,18 +27,17 @@ window.onload = () => {
 const handleKeyUp = ( e ) => {
     if ( e.key === 'Enter' ) {
         eventHandler( e );
-
         e.preventDefault();
     }
 };
 
 const eventHandler = ( e ) => {
-    if ( e.target === clearFormBtn) {
+    e.target.blur();
+
+    if ( e.target === clearTextareaBtn) {
         textArea.value = '';
-        textArea.focus();
     } else if ( e.target === submitFormBtn) {
-        textOutput.innerText = '';
-        submitFormBtn.blur();
+        translationOutput.innerText = '';
 
         if (interval) {
             clearInterval(interval);
@@ -47,10 +46,11 @@ const eventHandler = ( e ) => {
 
         const translation = translate(selectedOutputLang, dialect, textArea.value);
         displayTranslation(translation);
-    } else if (e.target === swapLangBtn) {
+    } else if (e.target === swapDirectionBtn || e.target === swapDirectionBtn.querySelector('img') ) {
         toggleOutputLang();
-        textArea.focus();
     }
+
+    textArea.focus();
 }
 
 /*
@@ -135,9 +135,9 @@ const displayTranslation = ( translation ) => {
     interval = setInterval(() => {
         const character = translation.charAt( counter );
         if ( character === ' ' ) {
-            textOutput.innerHTML += '&nbsp;';
+            translationOutput.innerHTML += '&nbsp;';
         } else {
-            textOutput.innerText += character;
+            translationOutput.innerText += character;
         }
 
         counter++;
@@ -186,10 +186,8 @@ const toggleOutputLang = () => {
     selectedOutputLang = selectedOutputLang === 'dolphin' ? 'english' : 'dolphin';
 
     if ( selectedOutputLang === 'dolphin' ) {
-        submitFormBtn.innerText = 'd o l p h i n a t e';
         textArea.setAttribute( 'placeholder', 'Type something...');
     } else {
-        submitFormBtn.innerText = 'h u m a n i s e';
         textArea.setAttribute( 'placeholder', `${translate( 'dolphin', dialect, 'Type something' )}...`);
     }
 

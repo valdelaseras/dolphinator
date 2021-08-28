@@ -36,13 +36,9 @@ h1 span {
     font-size: 3rem;
   }
 }
-#text-output {
+#translation-output {
   line-height: 2rem;
   letter-spacing: 3px;
-}
-
-.upside-down {
-  transform: scale(-1, 1);
 }
 
 body {
@@ -62,7 +58,7 @@ body {
   background-color: var(--primary-color);
 }
 
-.terminal-look::after {
+body::after {
   content: "";
   position: fixed;
   top: 0;
@@ -185,6 +181,12 @@ body {
   padding: 0.25rem 0.25rem;
 }
 
+.btn-icon img {
+  height: 1rem;
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+
 /*@start form*/
 form {
   display: -webkit-box;
@@ -259,7 +261,7 @@ textarea:active {
   }
 }
 /*@end form footer*/
-#text-output {
+#translation-output {
   display: block;
   margin: 1rem 0;
   word-break: break-all;
