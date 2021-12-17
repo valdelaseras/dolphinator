@@ -115,7 +115,7 @@ const displayTranslation = ( translation ) => {
         if ( counter === translation.length ) {
             clearInterval( interval );
         }
-    }, 5 );
+    }, 2 );
 };
 
 const swapTranslationDirection = () => {
