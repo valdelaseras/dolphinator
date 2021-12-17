@@ -18,7 +18,7 @@
 
 body {
   font-family: "Play", sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   color: var(--primary-text-color);
 }
 
@@ -49,8 +49,8 @@ h1 span {
     font-size: 3rem;
   }
 }
-#translation-output {
-  line-height: 2rem;
+#output {
+  line-height: 1.75rem;
   letter-spacing: 3px;
 }
 
@@ -220,13 +220,13 @@ body.dark-theme .invert-on-dark-theme {
 }
 
 .btn.btn-compact {
-  padding: 0.25rem 0.25rem;
+  padding: 0.25rem 0.5rem;
 }
 
 .btn-icon img {
   height: 1rem;
   vertical-align: middle;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 /*@start form*/
@@ -247,21 +247,23 @@ form {
 }
 
 textarea {
+  color: #f4f4f4;
   background-color: rgba(11, 11, 11, 0.1);
   border: none;
   border-radius: 15px;
   padding: 1rem;
   margin-bottom: 1.5rem;
-  color: #f4f4f4;
   font-size: 1rem;
   font-family: "Play", sans-serif;
   letter-spacing: 3px;
-  height: 25vh;
+  height: 30vh;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media only screen and (min-width: 768px) {
   textarea {
-    height: 20vh;
+    height: 50vh;
     margin-bottom: 1rem;
   }
 }
@@ -307,26 +309,10 @@ textarea:active {
   }
 }
 /*@end form footer*/
-#translation-output {
+#output {
   display: block;
   margin: 1rem 0;
   word-break: break-all;
-}
-
-#nav {
-  padding: 5px 20px 0;
-  display: flex;
-  justify-content: space-between;
-  align-content: space-between;
-}
-
-@media only screen and (min-width: 768px) {
-  #nav {
-    padding: 20px;
-  }
-}
-.nav-list.scripts {
-  transform: translateY(-1px);
 }
 
 .nav-list > li {
@@ -470,12 +456,17 @@ pre.ascii {
 }
 /*@end column*/
 .content {
-  padding: 20px;
+  padding: 5px 20px;
 }
 
+@media only screen and (min-width: 768px) {
+  .content {
+    padding: 20px;
+  }
+}
 /* @start grid */
 .grid {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -495,6 +486,18 @@ pre.ascii {
     display: flex;
     flex-direction: row-reverse;
   }
+}
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.flex-between {
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,6 +1,6 @@
 body {
     font-family: 'Play', sans-serif;
-    font-size: 18px;
+    font-size: 17px;
     color: var(--primary-text-color);
 }
 
@@ -33,7 +33,7 @@ h1 span {
     }
 }
 
-#translation-output {
-    line-height: 2rem;
+#output {
+    line-height: 1.75rem;
     letter-spacing: 3px;
 }
