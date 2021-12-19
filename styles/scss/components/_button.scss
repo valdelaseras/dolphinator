@@ -1,10 +1,16 @@
 .btn {
     background-color: transparent;
     border: 2px solid transparent;
-    padding: .25rem 1.25rem;
+    padding: .25rem .75rem;
     box-sizing: border-box;
     height: 100%;
     text-align: center;
+}
+
+@media only screen and (min-width: 768px ){
+    .btn {
+        padding: .25rem 1.25rem;
+    }
 }
 
 .btn:hover {
