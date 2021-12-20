@@ -55,21 +55,47 @@
           <div class="content">
             <label for="textarea"></label>
             <textarea id="textarea"
-                      tabindex="0"
-                      placeholder="Encode to dolphin"></textarea>
+                      tabindex="0"></textarea>
+          </div>
+        </div>
+
+        <div class="column two">
+          <div class="content">
+            <div class="output">
+              <p id="output">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column fixed-bottom utility-btns">
+          <div class="content">
 
             <div class="flex flex-between">
               <div>
-                <a class="btn btn-secondary"
+
+                <a id="clear-textarea-btn"
+                   class="btn btn-secondary btn-icon"
                    role="button"
-                   id="clear-textarea-btn"
-                   tabindex="0">clear</a>
+                   title="clear input"
+                   tabindex="0">
+                  <img src="assets/icons/clear.svg" class="invert-on-dark-theme" alt="clear"/>
+                </a>
 
                 <a id="swap-direction-btn"
                    class="btn btn-secondary btn-icon"
+                   title="swap translation direction"
                    tabindex="0"
                    role="button">
-                  <img src="assets/icons/swap.svg" class="invert-on-dark-theme" alt="swap arrows"/>
+                  <img src="assets/icons/arrow-swap.svg" class="invert-on-dark-theme" alt="swap arrows"/>
+                </a>
+
+                <a id="copy-output-btn"
+                   class="btn btn-secondary btn-icon"
+                   role="button"
+                   title="copy output"
+                   tabindex="0">
+                  <img src="assets/icons/copy.svg" class="invert-on-dark-theme" alt="copy button"/>
                 </a>
               </div>
 
@@ -80,13 +106,7 @@
                    tabindex="0">translate</a>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="column two">
-          <div class="content">
-             <p id="output">
-            </p>
           </div>
         </div>
       </div>
@@ -94,10 +114,10 @@
   </main>
 
   <div class="background">
-<!--    <div class="sun tablet-only"></div>-->
-<!--    <div class="dolphin">-->
-<!--      <img src="assets/images/dolphin.png" alt="dolphin"/>-->
-<!--    </div>-->
+    <div class="sun tablet-only"></div>
+    <div class="dolphin tablet-only">
+      <img src="assets/images/dolphin.png" alt="dolphin"/>
+    </div>
   </div>
 </body>
 </html>

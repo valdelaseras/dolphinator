@@ -3,6 +3,7 @@ const output = document.getElementById('output');
 
 const clearTextareaBtn = document.getElementById('clear-textarea-btn');
 const swapDirectionBtn = document.getElementById('swap-direction-btn');
+const copyOutputBtn = document.getElementById('copy-output-btn');
 const submitBtn = document.getElementById('submit-btn');
 
 let lang = 'human';
@@ -10,7 +11,8 @@ let theme = 'dark-theme';
 
 window.onload = () => {
     displayConsoleArt();
-    displayTranslation( translate( 'human', 'talk to dolpheens!' ));
+    updateTextareaPlaceholder();
+    displayTranslation( translate( 'human', 'encoded' ));
 };
 
 const handleKeyUp = ( e ) => {
@@ -21,7 +23,7 @@ const handleKeyUp = ( e ) => {
 };
 
 const eventHandler = ( e ) => {
-    if ( e.target === clearTextareaBtn ){
+    if ( e.target === clearTextareaBtn.querySelector('img') ){
         textArea.value = '';
         textArea.focus();
     }
@@ -32,10 +34,15 @@ const eventHandler = ( e ) => {
         displayTranslation( translate( lang, textArea.value ) );
     }
 
-    else if ( e.target === swapDirectionBtn || e.target === swapDirectionBtn.querySelector('img')) {
+    else if ( e.target === swapDirectionBtn.querySelector('img')) {
         swapTranslationDirection();
         updateTextareaPlaceholder();
+        updateOutputPlaceholder();
         textArea.value = '';
+    }
+
+    else if ( e.target === copyOutputBtn.querySelector('img') ){
+        copyToClipboard( output.innerText );
     }
 
     else if ( e.target.hasAttribute( 'data-theme' ) ){
@@ -45,7 +52,23 @@ const eventHandler = ( e ) => {
     }
 };
 
-removeClassOnElements = ( className, elementArray ) => {
+const copyToClipboard = ( text ) => {
+    // todo: also copy spaces properly:
+    // EEEEEEEEEeeEeeEe EEEEEEEEEEeeEEeE <0xa0>
+    // same weird things with ! etc. shit!
+    navigator.permissions.query({ name: "clipboard-write" }).then( result => {
+        if ( result.state === 'granted' || result.state === 'prompt' ) {
+            // not supported in firefox
+            navigator.clipboard.writeText( text ).then( function() {
+                console.log( text )
+            }, function() {
+                console.log("no perms")
+            })
+        }
+    });
+}
+
+const removeClassOnElements = ( className, elementArray ) => {
     for ( let i = 0; i < elementArray.length; i++ ){
         elementArray[i].classList.remove( className );
     }
@@ -124,16 +147,24 @@ const swapTranslationDirection = () => {
 
 const updateTextareaPlaceholder = () => {
     if ( lang === 'dolphin' ) {
-        textArea.setAttribute( 'placeholder', 'EEEEEEEEEeeEEeEEEEEEEEEEEeeEEeEeEEEEEEEEEeeEEEeeEEEEEEEEEeeEeeeeEEEEEEEEEeeEEeEEEEEEEEEEEeeEEeEe');
+        textArea.setAttribute( 'placeholder', translate( 'human', 'decode' ));
     } else if ( lang === 'human' ) {
-        textArea.setAttribute( 'placeholder', 'Encode to dolphin' );
+        textArea.setAttribute( 'placeholder', 'encode' );
     }
 };
+
+const updateOutputPlaceholder = () => {
+    if ( lang === 'dolphin' ) {
+        output.innerText = "decoded";
+    } else if ( lang === 'human' ) {
+        output.innerText = translate( 'human', 'encoded' );
+    }
+}
 
 const clearOutput = () => {
     output.innerText = '';
 
-    if (interval) {
+    if ( interval ) {
         clearInterval(interval);
         interval = null;
     }
