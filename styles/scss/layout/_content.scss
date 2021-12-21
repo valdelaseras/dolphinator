@@ -1,10 +1,15 @@
-.content {
+﻿.content {
     padding: 5px 20px;
 }
 
 @media only screen and ( min-width: 768px ){
     .content {
-        padding: 20px;
+        padding: 10px 20px;
     }
 }
 
+@media only screen and ( min-width: 1440px ){
+    .content {
+        padding: 20px;
+    }
+}

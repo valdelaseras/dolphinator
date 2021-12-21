@@ -1,5 +1,5 @@
-@media only screen and (min-width: 768px ){
-    .reverse-tablet {
+﻿@media only screen and (min-width: 1440px ){
+    .reverse-desktop {
         display: flex;
         flex-direction: row-reverse;
     }
@@ -7,7 +7,10 @@
 
 .flex {
     display: flex;
-    flex-direction: row;
+}
+
+.flex.flex-column {
+    flex-direction: column;
 }
 
 .flex-end {
@@ -16,4 +19,15 @@
 
 .flex-between {
     justify-content: space-between;
+}
+
+// so output isn't hidden behind utility btns
+body {
+    padding-bottom: 70px;
+}
+
+@media only screen and ( min-width: 1440px ){
+    body {
+        padding-bottom: 0;
+    }
 }

@@ -1,0 +1,15 @@
+﻿#output {
+    display: block;
+    word-break: break-all;
+}
+
+.output {
+    overflow-y: scroll;
+    flex-direction: column;
+}
+
+@media only screen and ( min-width: 1440px ){
+    .output {
+        height: 38vh;
+    }
+}

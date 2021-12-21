@@ -1,0 +1,31 @@
+﻿/*@start textarea*/
+.dark-theme textarea {
+    background-color: rgba(11,11,11,.4);
+}
+
+textarea {
+    color: #f4f4f4;
+    background-color: rgba(11,11,11,.1);
+    border: none;
+    border-radius: 15px;
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: 'Play', sans-serif;
+    letter-spacing: 3px;
+    height: 32vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media only screen and (min-width: 1440px){
+    textarea {
+        height: 38vh;
+    }
+}
+
+textarea:focus,
+textarea:focus-within,
+textarea:active {
+    outline: none;
+}
+/*@end textarea*/

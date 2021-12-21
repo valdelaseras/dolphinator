@@ -1,9 +1,16 @@
-.tablet-only {
+﻿.tablet-only,
+.desktop-only {
     display: none;
 }
 
 @media only screen and ( min-width: 768px ){
     .tablet-only {
+        display: block;
+    }
+}
+
+@media only screen and ( min-width: 1440px ){
+    .desktop-only {
         display: block;
     }
 }

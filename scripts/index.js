@@ -1,8 +1,9 @@
-const textArea = document.getElementById('textarea');
+﻿const textArea = document.getElementById('textarea');
 const output = document.getElementById('output');
 
 const clearTextareaBtn = document.getElementById('clear-textarea-btn');
 const swapDirectionBtn = document.getElementById('swap-direction-btn');
+const copyOutputBtn = document.getElementById('copy-output-btn');
 const submitBtn = document.getElementById('submit-btn');
 
 let lang = 'human';
@@ -10,7 +11,7 @@ let theme = 'dark-theme';
 
 window.onload = () => {
     displayConsoleArt();
-    displayTranslation( translate( 'human', 'talk to dolpheens!' ));
+    updatePlaceholders();
 };
 
 const handleKeyUp = ( e ) => {
@@ -21,7 +22,7 @@ const handleKeyUp = ( e ) => {
 };
 
 const eventHandler = ( e ) => {
-    if ( e.target === clearTextareaBtn ){
+    if ( e.target === clearTextareaBtn.querySelector('img') ){
         textArea.value = '';
         textArea.focus();
     }
@@ -32,10 +33,15 @@ const eventHandler = ( e ) => {
         displayTranslation( translate( lang, textArea.value ) );
     }
 
-    else if ( e.target === swapDirectionBtn || e.target === swapDirectionBtn.querySelector('img')) {
+    else if ( e.target === swapDirectionBtn.querySelector('img')) {
+        clearOutput();
         swapTranslationDirection();
-        updateTextareaPlaceholder();
+        updatePlaceholders();
         textArea.value = '';
+    }
+
+    else if ( e.target === copyOutputBtn.querySelector('img') ){
+        copyToClipboard( output.innerText );
     }
 
     else if ( e.target.hasAttribute( 'data-theme' ) ){
@@ -45,7 +51,18 @@ const eventHandler = ( e ) => {
     }
 };
 
-removeClassOnElements = ( className, elementArray ) => {
+const copyToClipboard = ( text ) => {
+    const regex = new RegExp( String.fromCharCode( 160 ), 'g' )
+    const formattedText = text.replace( regex, ' ' );
+
+    navigator.clipboard.writeText( formattedText ).then( () => {
+        console.log( formattedText )
+    }, () => {
+        console.log("uh oh, was not able to copy output :(")
+    })
+}
+
+const removeClassOnElements = ( className, elementArray ) => {
     for ( let i = 0; i < elementArray.length; i++ ){
         elementArray[i].classList.remove( className );
     }
@@ -122,19 +139,25 @@ const swapTranslationDirection = () => {
     lang = lang === 'dolphin' ? 'human' : 'dolphin';
 };
 
-const updateTextareaPlaceholder = () => {
+const updatePlaceholders = () => {
+    let outputPlaceholder = output.innerText;
+
     if ( lang === 'dolphin' ) {
-        textArea.setAttribute( 'placeholder', 'EEEEEEEEEeeEEeEEEEEEEEEEEeeEEeEeEEEEEEEEEeeEEEeeEEEEEEEEEeeEeeeeEEEEEEEEEeeEEeEEEEEEEEEEEeeEEeEe');
+        textArea.setAttribute( 'placeholder', translate( 'human', 'decode' ));
+        outputPlaceholder = "what did the dolphin say?";
     } else if ( lang === 'human' ) {
-        textArea.setAttribute( 'placeholder', 'Encode to dolphin' );
+        textArea.setAttribute( 'placeholder', 'dolphinate your text!' );
+        outputPlaceholder = translate( 'human', 'your text was dolphinated!' );
     }
+
+    displayTranslation( outputPlaceholder );
 };
 
 const clearOutput = () => {
     output.innerText = '';
 
-    if (interval) {
-        clearInterval(interval);
+    if ( interval ) {
+        clearInterval( interval );
         interval = null;
     }
 };
@@ -166,6 +189,9 @@ const displayConsoleArt = () => {
         '       . . . ./  - .          )\n' +
         '      .  . . |  _____..---.._/ ____ Seal _\n' +
         '~---~~~~----~~~~             ~~\n' +
+        '\n' +
+        '\n' +
+        'Welcome to the dolphinator' +
         '\n' +
         '\n'
     );
