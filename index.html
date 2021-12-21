@@ -57,6 +57,41 @@
             <textarea id="textarea"
                       tabindex="0"></textarea>
           </div>
+          <div class="utility-btns">
+            <div class="flex flex-between reverse-desktop">
+                <div>
+                  <a id="clear-textarea-btn"
+                     class="btn btn-secondary btn-icon"
+                     role="button"
+                     title="clear input"
+                     tabindex="0">
+                    <img src="assets/icons/clear.svg" class="invert-on-dark-theme" alt="clear"/>
+                  </a>
+
+                  <a id="swap-direction-btn"
+                     class="btn btn-secondary btn-icon"
+                     title="swap translation direction"
+                     tabindex="0"
+                     role="button">
+                    <img src="assets/icons/arrow-swap.svg" class="invert-on-dark-theme" alt="swap arrows"/>
+                  </a>
+
+                  <a id="copy-output-btn"
+                     class="btn btn-secondary btn-icon"
+                     role="button"
+                     title="copy output"
+                     tabindex="0">
+                    <img src="assets/icons/copy.svg" class="invert-on-dark-theme" alt="copy button"/>
+                  </a>
+                </div>
+                <div>
+                  <a class="btn btn-primary"
+                     role="button"
+                     id="submit-btn"
+                     tabindex="0">translate</a>
+                </div>
+              </div>
+          </div>
         </div>
 
         <div class="column two">
@@ -68,54 +103,13 @@
           </div>
         </div>
 
-        <div class="column fixed-bottom utility-btns">
-          <div class="content">
-
-            <div class="flex flex-between">
-              <div>
-
-                <a id="clear-textarea-btn"
-                   class="btn btn-secondary btn-icon"
-                   role="button"
-                   title="clear input"
-                   tabindex="0">
-                  <img src="assets/icons/clear.svg" class="invert-on-dark-theme" alt="clear"/>
-                </a>
-
-                <a id="swap-direction-btn"
-                   class="btn btn-secondary btn-icon"
-                   title="swap translation direction"
-                   tabindex="0"
-                   role="button">
-                  <img src="assets/icons/arrow-swap.svg" class="invert-on-dark-theme" alt="swap arrows"/>
-                </a>
-
-                <a id="copy-output-btn"
-                   class="btn btn-secondary btn-icon"
-                   role="button"
-                   title="copy output"
-                   tabindex="0">
-                  <img src="assets/icons/copy.svg" class="invert-on-dark-theme" alt="copy button"/>
-                </a>
-              </div>
-
-              <div>
-                <a class="btn btn-primary"
-                   role="button"
-                   id="submit-btn"
-                   tabindex="0">translate</a>
-              </div>
-            </div>
-
-          </div>
-        </div>
       </div>
     </div>
   </main>
 
   <div class="background">
-    <div class="sun tablet-only"></div>
-    <div class="dolphin tablet-only">
+<!--    <div class="sun desktop-only"></div>-->
+    <div class="dolphin desktop-only">
       <img src="assets/images/dolphin.png" alt="dolphin"/>
     </div>
   </div>

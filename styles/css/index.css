@@ -39,11 +39,6 @@ h1 span {
     display: block;
   }
 
-  h1 {
-    margin-top: 2.5rem;
-    font-size: 2.5rem;
-  }
-
   h1 span {
     display: inline-block;
     margin-left: -20px;
@@ -59,6 +54,11 @@ h1 span {
   letter-spacing: 3px;
 }
 
+@media only screen and (min-width: 1440px) {
+  #output {
+    margin: 0;
+  }
+}
 body {
   margin: 0;
   padding: 0;
@@ -163,12 +163,18 @@ body.dark-theme .invert-on-dark-theme {
   filter: brightness(100);
 }
 
-.tablet-only {
+.tablet-only,
+.desktop-only {
   display: none;
 }
 
 @media only screen and (min-width: 768px) {
   .tablet-only {
+    display: block;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .desktop-only {
     display: block;
   }
 }
@@ -234,7 +240,8 @@ body.dark-theme .invert-on-dark-theme {
 }
 
 .btn.btn-icon {
-  padding: 2px 0.75rem 0 0;
+  padding: 0;
+  border: none;
 }
 
 .btn-icon img {
@@ -244,10 +251,41 @@ body.dark-theme .invert-on-dark-theme {
 
 .utility-btns {
   height: auto;
-  padding: 1rem 0;
+  padding: 0.75rem 1rem;
   background-color: var(--tertiary-color);
   left: 0;
   right: 0;
+  position: fixed;
+  bottom: 0;
+}
+
+@media only screen and (min-width: 1440px) {
+  .utility-btns {
+    padding: 0 1.25rem;
+    position: relative;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: transparent;
+  }
+}
+.utility-btns .btn.btn-icon {
+  margin-right: 1rem;
+  margin-top: 4px;
+  transition: all 10ms;
+}
+
+@media only screen and (min-width: 1440px) {
+  .utility-btns .btn.btn-icon {
+    margin-left: 1rem;
+    margin-right: 0;
+  }
+}
+.utility-btns .btn.btn-icon:active,
+.utility-btns .btn.btn-icon:focus-within,
+.utility-btns .btn.btn-icon:focus,
+.utility-btns .btn.btn-icon:hover {
+  transform: scale(0.9);
+  background-color: transparent;
 }
 
 #submit-btn {
@@ -273,10 +311,9 @@ textarea {
   box-sizing: border-box;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   textarea {
     height: 50vh;
-    margin-bottom: 1rem;
   }
 }
 textarea:focus,
@@ -296,7 +333,7 @@ textarea:active {
   flex-direction: column;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   .output {
     height: 50vh;
   }
@@ -383,7 +420,7 @@ pre.ascii {
   }
 }
 /*@start column*/
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   .column {
     width: 100%;
     -webkit-box-sizing: border-box;
@@ -447,6 +484,11 @@ pre.ascii {
 
 @media only screen and (min-width: 768px) {
   .content {
+    padding: 10px 20px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .content {
     padding: 20px;
   }
 }
@@ -467,8 +509,8 @@ pre.ascii {
 }
 
 /* @end grid */
-@media only screen and (min-width: 768px) {
-  .reverse-tablet {
+@media only screen and (min-width: 1440px) {
+  .reverse-desktop {
     display: flex;
     flex-direction: row-reverse;
   }
@@ -489,9 +531,14 @@ pre.ascii {
   justify-content: space-between;
 }
 
-.fixed-bottom {
-  position: fixed;
-  bottom: 0;
+body {
+  padding-bottom: 70px;
+}
+
+@media only screen and (min-width: 1440px) {
+  body {
+    padding-bottom: 0;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
