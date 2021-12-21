@@ -1,4 +1,4 @@
-const textArea = document.getElementById('textarea');
+﻿const textArea = document.getElementById('textarea');
 const output = document.getElementById('output');
 
 const clearTextareaBtn = document.getElementById('clear-textarea-btn');
