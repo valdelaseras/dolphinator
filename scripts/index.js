@@ -144,10 +144,10 @@ const updatePlaceholders = () => {
 
     if ( lang === 'dolphin' ) {
         textArea.setAttribute( 'placeholder', translate( 'human', 'decode' ));
-        outputPlaceholder = "decoded";
+        outputPlaceholder = "what did the dolphin say?";
     } else if ( lang === 'human' ) {
-        textArea.setAttribute( 'placeholder', 'encode' );
-        outputPlaceholder = translate( 'human', 'encoded' );
+        textArea.setAttribute( 'placeholder', 'dolphinate your text!' );
+        outputPlaceholder = translate( 'human', 'your text was dolphinated!' );
     }
 
     displayTranslation( outputPlaceholder );
