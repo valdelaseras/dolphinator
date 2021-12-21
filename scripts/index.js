@@ -11,8 +11,7 @@ let theme = 'dark-theme';
 
 window.onload = () => {
     displayConsoleArt();
-    updateTextareaPlaceholder();
-    displayTranslation( translate( 'human', 'encoded' ));
+    updatePlaceholders();
 };
 
 const handleKeyUp = ( e ) => {
@@ -35,9 +34,9 @@ const eventHandler = ( e ) => {
     }
 
     else if ( e.target === swapDirectionBtn.querySelector('img')) {
+        clearOutput();
         swapTranslationDirection();
-        updateTextareaPlaceholder();
-        updateOutputPlaceholder();
+        updatePlaceholders();
         textArea.value = '';
     }
 
@@ -53,19 +52,14 @@ const eventHandler = ( e ) => {
 };
 
 const copyToClipboard = ( text ) => {
-    // todo: also copy spaces properly:
-    // EEEEEEEEEeeEeeEe EEEEEEEEEEeeEEeE <0xa0>
-    // same weird things with ! etc. shit!
-    navigator.permissions.query({ name: "clipboard-write" }).then( result => {
-        if ( result.state === 'granted' || result.state === 'prompt' ) {
-            // not supported in firefox
-            navigator.clipboard.writeText( text ).then( function() {
-                console.log( text )
-            }, function() {
-                console.log("no perms")
-            })
-        }
-    });
+    const regex = new RegExp( String.fromCharCode( 160 ), 'g' )
+    const formattedText = text.replace( regex, ' ' );
+
+    navigator.clipboard.writeText( formattedText ).then( () => {
+        console.log( formattedText )
+    }, () => {
+        console.log("uh oh, was not able to copy output :(")
+    })
 }
 
 const removeClassOnElements = ( className, elementArray ) => {
@@ -145,27 +139,25 @@ const swapTranslationDirection = () => {
     lang = lang === 'dolphin' ? 'human' : 'dolphin';
 };
 
-const updateTextareaPlaceholder = () => {
+const updatePlaceholders = () => {
+    let outputPlaceholder = output.innerText;
+
     if ( lang === 'dolphin' ) {
         textArea.setAttribute( 'placeholder', translate( 'human', 'decode' ));
+        outputPlaceholder = "decoded";
     } else if ( lang === 'human' ) {
         textArea.setAttribute( 'placeholder', 'encode' );
+        outputPlaceholder = translate( 'human', 'encoded' );
     }
-};
 
-const updateOutputPlaceholder = () => {
-    if ( lang === 'dolphin' ) {
-        output.innerText = "decoded";
-    } else if ( lang === 'human' ) {
-        output.innerText = translate( 'human', 'encoded' );
-    }
-}
+    displayTranslation( outputPlaceholder );
+};
 
 const clearOutput = () => {
     output.innerText = '';
 
     if ( interval ) {
-        clearInterval(interval);
+        clearInterval( interval );
         interval = null;
     }
 };
@@ -197,6 +189,9 @@ const displayConsoleArt = () => {
         '       . . . ./  - .          )\n' +
         '      .  . . |  _____..---.._/ ____ Seal _\n' +
         '~---~~~~----~~~~             ~~\n' +
+        '\n' +
+        '\n' +
+        'Welcome to the dolphinator' +
         '\n' +
         '\n'
     );

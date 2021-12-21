@@ -313,7 +313,7 @@ textarea {
 
 @media only screen and (min-width: 1440px) {
   textarea {
-    height: 50vh;
+    height: 38vh;
   }
 }
 textarea:focus,
@@ -335,7 +335,7 @@ textarea:active {
 
 @media only screen and (min-width: 1440px) {
   .output {
-    height: 50vh;
+    height: 38vh;
   }
 }
 .nav-list > li {
@@ -494,7 +494,7 @@ pre.ascii {
 }
 /* @start grid */
 .grid {
-  max-width: 1200px;
+  max-width: 1050px;
   margin: 0 auto;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
