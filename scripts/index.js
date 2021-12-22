@@ -191,7 +191,9 @@ const displayConsoleArt = () => {
         '~---~~~~----~~~~             ~~\n' +
         '\n' +
         '\n' +
-        'Welcome to the dolphinator' +
+        'Welcome to the dolphinator! \n' +
+        '\n' +
+        'CLI dolphinator: https://www.npmjs.com/package/dolphin8 \n' +
         '\n' +
         '\n'
     );
