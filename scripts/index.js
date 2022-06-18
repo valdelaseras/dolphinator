@@ -17,7 +17,7 @@ window.onload = () => {
 };
 
 const handleToggleBtnLabel  = () => {
-    return toggleCheckbox.checked ? toggleBtn.innerText = 'e x i t' : toggleBtn.innerText = 'info';
+    return toggleCheckbox.checked ? toggleBtn.innerText = 'e x i t' : toggleBtn.innerText = 'Info';
 }
 
 const handleKeyUp = ( e ) => {
