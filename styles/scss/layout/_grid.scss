@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+.grid.wide-grid {
+    max-width: 80vw;
+}
+
 .grid::after {
     content: "";
     clear: both;

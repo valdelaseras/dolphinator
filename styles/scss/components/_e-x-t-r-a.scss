@@ -1,0 +1,100 @@
+#e-x-t-r-a {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    left: -100vw;
+    right: 100vw;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 250ms;
+    background-color: #1874d2;
+    text-align: left;
+    overflow: scroll;
+    color: var(--primary-color);
+}
+
+#e-x-t-r-a::after {
+    content: "";
+    background: repeating-linear-gradient(
+                    0deg,
+                    rgba(black, 0.5),
+                    rgba(black, 0.5) 1px,
+                    transparent 1px,
+                    transparent 2px
+    );
+}
+
+#toggle-checkbox {
+    display: none;
+}
+
+#toggle-checkbox:checked ~ #e-x-t-r-a {
+    left: 0;
+    right: 50vw;
+}
+
+#toggle-checkbox:checked + label[for="toggle-checkbox"] {
+    position: absolute;
+    top: 5rem;
+    right: 10vw;
+    z-index: 100;
+
+    #what-does-this-button-do {
+        background-color: transparent;
+        border: none;
+        color: var(--primary-color)
+    }
+}
+
+.staggered-text {
+    font-size: 4rem;
+    transform: translateX(-20px);
+    color: var(--primary-color);
+
+    span:nth-child(2) {animation: 400ms blink 100ms infinite;}
+    span:nth-child(3) {animation: 650ms blink 50ms infinite;}
+    span:nth-child(4) {animation: 900ms blink infinite;}
+    span:nth-child(5) {animation: 1400ms blink 25ms infinite;}
+    span:nth-child(6) {animation: 1800ms blink 100ms infinite;}
+    span:nth-child(7) {animation: 2300ms blink 50ms infinite;}
+    span:nth-child(8) {animation: 1800ms blink 25ms infinite;}
+    span:nth-child(9) {animation: 1400ms blink 100ms infinite;}
+    span:nth-child(10) {animation: 900ms blink 50ms infinite;}
+    span:nth-child(11) {animation: 650ms blink 25ms infinite;}
+    span:nth-child(12) {animation: 400ms blink infinite;}
+
+    span {
+        letter-spacing: 2rem;
+    }
+}
+
+.rainbow-gradient {
+    background-image:
+            linear-gradient(to right,
+                    rgb(250, 161, 250),
+                    hotpink,
+                    hotpink,
+                    rgb(250, 161, 250)
+            );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: moveTheRainbow 50s linear infinite;
+
+    p {
+        font-size: 1.5rem;
+        word-wrap: anywhere;
+        line-height: 1.75rem;
+        letter-spacing: 15px;
+    }
+}
+
+.kaomoji {
+    font-size: 2rem;
+    font-family: monospace, 'sans-serif';
+}
+
+.urls a {
+    color: rgb(250, 161, 250);
+}

@@ -21,6 +21,10 @@
     justify-content: space-between;
 }
 
+.flex-center {
+    justify-content: center;
+}
+
 // so output isn't hidden behind utility btns
 body {
     padding-bottom: 70px;
@@ -31,3 +35,4 @@ body {
         padding-bottom: 0;
     }
 }
+

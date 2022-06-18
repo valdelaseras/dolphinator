@@ -3,6 +3,8 @@ const output = document.getElementById('output');
 
 const clearTextareaBtn = document.getElementById('clear-textarea-btn');
 const swapDirectionBtn = document.getElementById('swap-direction-btn');
+const toggleCheckbox = document.getElementById('toggle-checkbox');
+const toggleBtn = document.getElementById('what-does-this-button-do');
 const copyOutputBtn = document.getElementById('copy-output-btn');
 const submitBtn = document.getElementById('submit-btn');
 
@@ -14,10 +16,19 @@ window.onload = () => {
     updatePlaceholders();
 };
 
+const handleToggleBtnLabel  = () => {
+    return toggleCheckbox.checked ? toggleBtn.innerText = 'e x i t' : toggleBtn.innerText = 'enter';
+}
+
 const handleKeyUp = ( e ) => {
     if ( e.key === 'Enter' ){
         eventHandler( e );
         e.preventDefault();
+    }
+
+    if ( toggleCheckbox.checked && e.key === 'Escape' ){
+        toggleCheckbox.checked = 0
+        handleToggleBtnLabel()
     }
 };
 
@@ -132,7 +143,7 @@ const displayTranslation = ( translation ) => {
         if ( counter === translation.length ) {
             clearInterval( interval );
         }
-    }, 2 );
+    }, 1 );
 };
 
 const swapTranslationDirection = () => {
@@ -201,3 +212,4 @@ const displayConsoleArt = () => {
 
 document.addEventListener('click', eventHandler );
 document.addEventListener('keydown', handleKeyUp );
+toggleCheckbox.addEventListener('click', handleToggleBtnLabel );
