@@ -28,54 +28,29 @@ body::after {
     bottom: 0;
     background: rgb(204, 170, 255);
 
-    .sun {
-        background: rgb(255, 255, 204);
-        width: 250px;
-        height: 250px;
-        border-radius: 50%;
-        position: absolute;
-        top: calc(50vh - 125px);
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        opacity: .8;
-    }
+    > div.flex.flex-center {
+        align-items: center;
 
-    .dolphin {
-        position: absolute;
-        height: 290px;
-        width: 290px;
-        top: calc(50vh - 145px);
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        animation: spin 4s infinite linear;
+        #sonar {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: .5;
+            animation: spin 3s infinite linear;
 
-        img {
-            margin: 2.5rem;
-            height: 100px;
-            width: auto;
-            opacity: .05;
-            transform: rotate(-60deg);
-        }
-    }
+            .circle {
+                position: fixed;
+                opacity: 0;
+                height: 0;
+                width: 0;
+                transform: scale(0.6);
+                border-radius: 50%;
+            }
 
-    @media only screen and (min-width: 768px){
-        .sun {
-            width: 500px;
-            height: 500px;
-            top: calc(50vh - 250px);
-        }
-
-        .dolphin {
-            height: 500px;
-            width: 500px;
-            top: calc(50vh - 250px);
-
-            img {
-                margin: 3rem;
-                height: 200px;
+            span.circle {
+                border: 1px solid cyan;
             }
         }
     }
@@ -89,24 +64,12 @@ body.light-theme .background{
             rgba(204, 255, 204, 1) 90%);
 }
 
-body.light-theme .background .sun {
-    background: linear-gradient(0deg,
-            rgba(255, 255, 204, 1) 0%,
-            rgba(255, 170, 255, 1) 100%);
-}
-
 body.dark-theme .background {
     background: linear-gradient(180deg,
             rgb(59, 9, 134) 17%,
             rgb(69, 41, 171) 39%,
             rgb(133, 80, 214) 68%,
             rgb(250, 161, 250,.8) 105%);
-}
-
-body.dark-theme .background .sun {
-    background: linear-gradient(180deg,
-            rgba(255, 255, 204, 1) 0%,
-            rgba(255, 170, 255, 1) 100%);
 }
 
 body.dark-theme .invert-on-dark-theme {

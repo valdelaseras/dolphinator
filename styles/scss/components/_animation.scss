@@ -30,26 +30,48 @@
     }
 }
 
+@keyframes grow {
+    0% {
+        opacity: 0;
+        height: 0;
+        width: 0;
+    }
+    20% {
+        opacity: 1;
+        height: 220px;
+        width: 220px;
+    }
+    40% {
+        height: 352px;
+        width: 352px;
+    }
+    60% {
+        height: 563px;
+        width: 563px;
+    }
+    80% {
+        height: 900px;
+        width: 900px;
+        opacity: 1;
+    }
+    100% {
+        height: 1440px;
+        width: 1440px;
+        opacity: 0;
+    }
+}
+
+@keyframes scale {
+    0% { transform: scale(1); }
+    40% { transform: scale(1); }
+    50% { transform: scale(.5);}
+    70% { transform: scale(2);}
+    90% { transform: scale(.5);}
+    100% { transform: scale(1); }
+}
+
 @keyframes moveTheRainbow {
     to {
         background-position: 5000vh;
     }
 }
-
-// add dark theme colors at top of this gradient
-// set gradient on bottom 4 in light
-// animate gradient up on dark and vice versa
-//.dark-theme-background {
-//    animation: toDarkGradient 5s linear forwards;
-//    background-image: linear-gradient(0deg,
-//            #ccaaff,
-//            #ccccee,
-//            #ccffdd,
-//            #ccffcc);
-//    background-size: 100% 500%;
-//}
-//
-//@keyframes toDarkGradient {
-//    0% { background-position: 0 100%; }
-//    100% { background-position: 0 0; }
-//}

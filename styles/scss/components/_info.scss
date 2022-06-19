@@ -1,4 +1,4 @@
-#e-x-t-r-a {
+#info-screen {
     position: fixed;
     height: 100%;
     width: 100vw;
@@ -15,7 +15,7 @@
     color: var(--primary-color);
 }
 
-#e-x-t-r-a::after {
+#info-screen::after {
     content: "";
     background: repeating-linear-gradient(
                     0deg,
@@ -30,7 +30,7 @@
     display: none;
 }
 
-#toggle-checkbox:checked ~ #e-x-t-r-a {
+#toggle-checkbox:checked ~ #info-screen {
     left: 0;
     right: 50vw;
 }

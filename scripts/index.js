@@ -7,6 +7,7 @@ const toggleCheckbox = document.getElementById('toggle-checkbox');
 const toggleBtn = document.getElementById('what-does-this-button-do');
 const copyOutputBtn = document.getElementById('copy-output-btn');
 const submitBtn = document.getElementById('submit-btn');
+const sonarCircles = document.querySelectorAll('.circle');
 
 let lang = 'human';
 let theme = 'dark-theme';
@@ -15,10 +16,6 @@ window.onload = () => {
     displayConsoleArt();
     updatePlaceholders();
 };
-
-const handleToggleBtnLabel  = () => {
-    return toggleCheckbox.checked ? toggleBtn.innerText = 'e x i t' : toggleBtn.innerText = 'Info';
-}
 
 const handleKeyUp = ( e ) => {
     if ( e.key === 'Enter' ){
@@ -31,6 +28,23 @@ const handleKeyUp = ( e ) => {
         handleToggleBtnLabel()
     }
 };
+
+const activateSonar = () => {
+    let delay = 0;
+
+    for( let circle of sonarCircles ){
+        circle.style.animation = 'grow 1s linear infinite';
+        circle.style.animationDelay = delay+'ms';
+
+        delay += 150;
+    }
+}
+
+const deactivateSonar = () => {
+    for( let circle of sonarCircles ){
+        circle.style.animation = 'grow 1s linear forwards';
+    }
+}
 
 const eventHandler = ( e ) => {
     if ( e.target === clearTextareaBtn.querySelector('img') ){
@@ -128,6 +142,8 @@ const decodeFromDolphin = ( input ) => {
 };
 
 const displayTranslation = ( translation ) => {
+    activateSonar();
+
     let counter = 0;
 
     interval = setInterval(() => {
@@ -141,6 +157,7 @@ const displayTranslation = ( translation ) => {
         counter++;
 
         if ( counter === translation.length ) {
+            deactivateSonar();
             clearInterval( interval );
         }
     }, 1 );
@@ -172,6 +189,10 @@ const clearOutput = () => {
         interval = null;
     }
 };
+
+const handleToggleBtnLabel  = () => {
+    return toggleCheckbox.checked ? toggleBtn.innerText = 'e x i t' : toggleBtn.innerText = 'Info';
+}
 
 const setTheme = ( newTheme ) => {
     const body = document.getElementsByTagName( 'BODY' )[0];
